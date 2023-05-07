@@ -1,0 +1,75 @@
+MySQL表的增删改查
+CRUD:Create,Retrieve,Update,Delete
+.新增数据
+.查询数据
+.修改数据
+.删除数据
+2.新增(Create)
+--创建一张学生表
+Drop table if exists student;
+create table student(
+   id int,
+  sn int comment'学号',
+ name varchar(20) comment'姓名',
+qq_mail varchar(20) comment'QQ邮箱'
+);
+
+2.1 单行数据+全列插入
+--插入两条记录,value_list 数量必须和定义表的数量及顺序一致
+insert into student values(100,10000,'唐三藏',Null);
+insert into student values(101,10001,'孙悟空','11111');
+
+2.2多行数据+指定列插入
+--插入两条记录,values_list 数量必须和指定列数量及顺序一致
+insert into student(id,sn,name) values
+  (102,20001,'曹孟德'),
+    (103,20002,'孙仲谋');
+
+3.查询
+案例
+--创建考试成绩表
+drop table idf exists exam_result;
+create table exame_result (
+  id int,
+  name varchar(20),
+  chinese decimal(3,1),
+   math decimal(3,1),
+   english decimal(3,1)
+);
+--插入测试数据
+insert into exam_result (id,name,chinese,math,english) values
+      (1,'唐三藏',67,98,56),
+   (2,'孙悟空',87.5,78,77),
+  (3,'猪悟能',88,98.5,90),
+  (4,'曹孟德',78,89,90),
+  (5,'刘玄德', 55.5, 85, 45),
+ (6,'孙权', 70, 73, 78.5),
+ (7,'宋公明', 75, 65, 30);
+
+3.1 全列查询
+--通常情况下不建议使用*进行全列查询
+--1.查询的列越多,意味着需要传输的数据量越大;
+--2.可能会影响到索引的使用(索引待后面课程讲解)
+Select * from exam_result;
+
+3.2指定列查询
+--指定列的顺序不需要按定义表的顺序来
+select id,name,english from exam_result;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
